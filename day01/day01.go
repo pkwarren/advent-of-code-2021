@@ -33,18 +33,7 @@ func processFileOfInts(r io.Reader, f func(int64) error) error {
 }
 
 func NumLargerMeasurements(r io.Reader) (int, error) {
-	numLarger := 0
-	var prevDepth int64
-	if err := processFileOfInts(r, func(depth int64) error {
-		if prevDepth > 0 && depth > prevDepth {
-			numLarger++
-		}
-		prevDepth = depth
-		return nil
-	}); err != nil {
-		return 0, err
-	}
-	return numLarger, nil
+	return NumLargerMeasurementsSlidingWindow(r, 1)
 }
 
 func NumLargerMeasurementsSlidingWindow(r io.Reader, window int) (int, error) {
