@@ -63,10 +63,10 @@ func NumLargerMeasurementsSlidingWindow(r io.Reader, window int) (int, error) {
 			newSum := prevSum
 			newSum = newSum - slidingWindow[nextOffset]
 			newSum = newSum + depth
-			slidingWindow[nextOffset] = depth
 			if newSum > prevSum {
 				numLarger = numLarger + 1
 			}
+			slidingWindow[nextOffset] = depth
 			prevSum = newSum
 		}
 		nextOffset += 1
