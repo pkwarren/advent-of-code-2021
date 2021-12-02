@@ -53,28 +53,21 @@ func NumLargerMeasurementsSlidingWindow(r io.Reader, window int) (int, error) {
 	}
 	numLarger := 0
 	nextOffset := 0
-	prevSum := int64(-1)
+	prevSum := int64(0)
 	slidingWindow := make([]int64, 0, window)
 	if err := processFileOfInts(r, func(depth int64) error {
 		if len(slidingWindow) < window {
 			slidingWindow = append(slidingWindow, depth)
-		}
-		if len(slidingWindow) == window {
-			if prevSum < 0 {
-				prevSum = 0
-				for _, val := range slidingWindow {
-					prevSum += val
-				}
-			} else {
-				newSum := prevSum
-				newSum = newSum - slidingWindow[nextOffset]
-				newSum = newSum + depth
-				if newSum > prevSum {
-					numLarger = numLarger + 1
-				}
-				slidingWindow[nextOffset] = depth
-				prevSum = newSum
+			prevSum += depth
+		} else {
+			newSum := prevSum
+			newSum = newSum - slidingWindow[nextOffset]
+			newSum = newSum + depth
+			slidingWindow[nextOffset] = depth
+			if newSum > prevSum {
+				numLarger = numLarger + 1
 			}
+			prevSum = newSum
 		}
 		nextOffset += 1
 		if nextOffset >= window {
