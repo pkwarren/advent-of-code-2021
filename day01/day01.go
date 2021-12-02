@@ -22,14 +22,20 @@ func processFile(r io.Reader, f func(string) error) error {
 	return nil
 }
 
-func NumLargerMeasurements(r io.Reader) (int, error) {
-	numLarger := 0
-	var prevDepth int64
-	if err := processFile(r, func(s string) error {
-		depth, err := strconv.ParseInt(s, 10, 64)
+func processFileOfInts(r io.Reader, f func(int64) error) error {
+	return processFile(r, func(s string) error {
+		i, err := strconv.ParseInt(s, 10, 64)
 		if err != nil {
 			return err
 		}
+		return f(i)
+	})
+}
+
+func NumLargerMeasurements(r io.Reader) (int, error) {
+	numLarger := 0
+	var prevDepth int64
+	if err := processFileOfInts(r, func(depth int64) error {
 		if prevDepth > 0 && depth > prevDepth {
 			numLarger++
 		}
@@ -49,11 +55,7 @@ func NumLargerMeasurementsSlidingWindow(r io.Reader, window int) (int, error) {
 	nextOffset := 0
 	prevSum := int64(-1)
 	slidingWindow := make([]int64, 0, window)
-	if err := processFile(r, func(s string) error {
-		depth, err := strconv.ParseInt(s, 10, 64)
-		if err != nil {
-			return err
-		}
+	if err := processFileOfInts(r, func(depth int64) error {
 		if len(slidingWindow) < window {
 			slidingWindow = append(slidingWindow, depth)
 		}
