@@ -94,7 +94,6 @@ func calculateO2Rating(values []int, maxPrecision int) int {
 			})
 			values = values[lowerBound:]
 		} else {
-			o2min &= ^(1 << i)
 			o2max &= ^(1 << i)
 			upperBound := sort.Search(len(values), func(i int) bool {
 				return values[i] > o2max
@@ -115,7 +114,6 @@ func calculateCO2Rating(values []int, maxPrecision int) int {
 	for i := maxPrecision - 1; i >= 0; i -= 1 {
 		ones, zeros := countOnesZeros(values, i)
 		if zeros <= ones {
-			co2min &= ^(1 << i)
 			co2max &= ^(1 << i)
 			upperBound := sort.Search(len(values), func(i int) bool {
 				return values[i] > co2max
