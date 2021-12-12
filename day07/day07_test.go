@@ -11,6 +11,7 @@ import (
 func Test_ParseInput(t *testing.T) {
 	f, err := os.Open("testdata/input01")
 	require.NoError(t, err)
+	defer f.Close()
 	nums, err := ParseInput(f)
 	require.NoError(t, err)
 	assert.Equal(t, []int{16, 1, 2, 0, 4, 2, 7, 1, 2, 14}, nums)
@@ -19,6 +20,7 @@ func Test_ParseInput(t *testing.T) {
 func Test_CalculateMinFuelPosition_Part1_Input1(t *testing.T) {
 	f, err := os.Open("testdata/input01")
 	require.NoError(t, err)
+	defer f.Close()
 	nums, err := ParseInput(f)
 	require.NoError(t, err)
 	pos, fuel := CalculateMinFuelPosition(nums)
@@ -29,6 +31,7 @@ func Test_CalculateMinFuelPosition_Part1_Input1(t *testing.T) {
 func Test_CalculateMinFuelPosition_Part1_Input2(t *testing.T) {
 	f, err := os.Open("testdata/input02")
 	require.NoError(t, err)
+	defer f.Close()
 	nums, err := ParseInput(f)
 	require.NoError(t, err)
 	pos, fuel := CalculateMinFuelPosition(nums)
@@ -39,6 +42,7 @@ func Test_CalculateMinFuelPosition_Part1_Input2(t *testing.T) {
 func Test_CalculateMinFuelPosition_Part2_Input1(t *testing.T) {
 	f, err := os.Open("testdata/input01")
 	require.NoError(t, err)
+	defer f.Close()
 	nums, err := ParseInput(f)
 	require.NoError(t, err)
 	pos, fuel := CalculateMinFuelPosition_Part2(nums)
@@ -49,6 +53,7 @@ func Test_CalculateMinFuelPosition_Part2_Input1(t *testing.T) {
 func Test_CalculateMinFuelPosition_Part2_Input2(t *testing.T) {
 	f, err := os.Open("testdata/input02")
 	require.NoError(t, err)
+	defer f.Close()
 	nums, err := ParseInput(f)
 	require.NoError(t, err)
 	pos, fuel := CalculateMinFuelPosition_Part2(nums)
