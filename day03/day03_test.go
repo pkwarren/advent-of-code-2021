@@ -1,9 +1,10 @@
 package day03
 
 import (
-	"github.com/stretchr/testify/require"
 	"os"
 	"testing"
+
+	"github.com/stretchr/testify/require"
 )
 
 func Test_CalculatePowerConsumption_Part1_Input1(t *testing.T) {

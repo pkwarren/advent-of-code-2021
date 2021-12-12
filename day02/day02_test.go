@@ -1,9 +1,10 @@
 package day02
 
 import (
-	"github.com/stretchr/testify/require"
 	"os"
 	"testing"
+
+	"github.com/stretchr/testify/require"
 )
 
 func Test_CalculateLocationPart1_Input1(t *testing.T) {
