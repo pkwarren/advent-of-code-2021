@@ -1,10 +1,11 @@
 package day10
 
 import (
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
 	"os"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func Test_TotalSyntaxErrorScore_Input1(t *testing.T) {
