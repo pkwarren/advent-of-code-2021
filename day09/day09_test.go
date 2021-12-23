@@ -32,6 +32,7 @@ func Test_FindBasinSizes_Part2_Input1(t *testing.T) {
 	require.NoError(t, err)
 	defer f.Close()
 	basinSizes, err := FindBasinSizes(f)
+	require.NoError(t, err)
 	sort.Ints(basinSizes)
 	assert.Equal(t, []int{3, 9, 9, 14}, basinSizes)
 }
@@ -41,6 +42,7 @@ func Test_FindBasinSizes_Part2_Input2(t *testing.T) {
 	require.NoError(t, err)
 	defer f.Close()
 	basinSizes, err := FindBasinSizes(f)
+	require.NoError(t, err)
 	sort.Sort(sort.Reverse(sort.IntSlice(basinSizes)))
 	require.True(t, len(basinSizes) >= 3)
 	assert.Equal(t, 847044, basinSizes[0]*basinSizes[1]*basinSizes[2])

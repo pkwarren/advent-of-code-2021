@@ -49,7 +49,7 @@ func (o *OctopusSimulation) Step() {
 		}
 	}
 	for len(reset) > 0 {
-		next := make(map[Point]struct{}, 0)
+		next := make(map[Point]struct{})
 		for _, p := range reset {
 			for x := max(p.X-1, 0); x < min(p.X+2, len(o.Grid[p.Y])); x++ {
 				for y := max(p.Y-1, 0); y < min(p.Y+2, len(o.Grid)); y++ {

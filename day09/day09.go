@@ -96,7 +96,7 @@ func FindBasinSizes(r io.Reader) ([]int, error) {
 	lowPoints := FindLowPoints(lines)
 	basinSizes := make([]int, 0, len(lowPoints))
 	for _, p := range lowPoints {
-		marked := make(map[Point]struct{}, 0)
+		marked := make(map[Point]struct{})
 		explore(p.P, lines, marked)
 		basinSizes = append(basinSizes, len(marked))
 	}

@@ -51,7 +51,7 @@ var digitToWires = map[int]string{
 }
 
 func FindUniqueSegments(r io.Reader) (int, error) {
-	lenToCount := make(map[int]int, 0)
+	lenToCount := make(map[int]int)
 	for _, wire := range digitToWires {
 		lenToCount[len(wire)] += 1
 	}
@@ -151,7 +151,7 @@ func charsInCommon(s1, s2 string) int {
 		shorter, longer = s2, s1
 	}
 	for _, c := range shorter {
-		if strings.IndexRune(longer, c) >= 0 {
+		if strings.ContainsRune(longer, c) {
 			common += 1
 		}
 	}
