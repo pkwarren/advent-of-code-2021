@@ -84,7 +84,6 @@ func CalculateLifeSupportRating(r io.Reader) (int, error) {
 
 func calculateO2Rating(values []int, maxPrecision int) int {
 	o2min, o2max := 0, int(math.Pow(2, float64(maxPrecision))-1)
-	fmt.Printf("%b (o2min) %b (o2max) values %v\n", o2min, o2max, valuesBinary(values, maxPrecision))
 	for i := maxPrecision - 1; i >= 0; i -= 1 {
 		ones, zeros := countOnesZeros(values, i)
 		if ones >= zeros {

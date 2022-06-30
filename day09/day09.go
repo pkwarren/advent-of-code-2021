@@ -3,7 +3,6 @@ package day09
 import (
 	"bufio"
 	"io"
-	"log"
 	"strings"
 )
 
@@ -112,7 +111,6 @@ func explore(p Point, lines [][]int, marked map[Point]struct{}) {
 	val := lines[y][x]
 	if val < 9 {
 		marked[p] = struct{}{}
-		log.Println("exploring", p, val)
 		if x > 0 {
 			explore(Point{X: x - 1, Y: y}, lines, marked)
 		}

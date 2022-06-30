@@ -41,9 +41,8 @@ func Test_Part1_Input1(t *testing.T) {
 	assert.NotEmpty(t, g.Numbers)
 won:
 	for _, num := range g.Numbers {
-		for i, b := range g.Boards {
+		for _, b := range g.Boards {
 			if marked := b.Mark(num); marked && b.Won() {
-				t.Logf("won! on board %d with %d", i, num)
 				require.Equal(t, 24, num)
 				require.Equal(t, 188, b.UnmarkedTotal())
 				require.Equal(t, 4512, num*b.UnmarkedTotal())
@@ -63,9 +62,8 @@ func Test_Part1_Input2(t *testing.T) {
 	assert.NotEmpty(t, g.Numbers)
 won:
 	for _, num := range g.Numbers {
-		for i, b := range g.Boards {
+		for _, b := range g.Boards {
 			if marked := b.Mark(num); marked && b.Won() {
-				t.Logf("won! on board %d with %d", i, num)
 				require.Equal(t, 42, num)
 				require.Equal(t, 794, b.UnmarkedTotal())
 				require.Equal(t, 33348, num*b.UnmarkedTotal())
@@ -86,12 +84,11 @@ func Test_Part2_Input1(t *testing.T) {
 	lastNum := 0
 	var lastWinner *Board
 	for _, num := range g.Numbers {
-		for i, b := range g.Boards {
+		for _, b := range g.Boards {
 			if b.Won() {
 				continue
 			}
 			if marked := b.Mark(num); marked && b.Won() {
-				t.Logf("won! on board %d with %d", i, num)
 				lastNum = num
 				lastWinner = b
 			}
@@ -114,12 +111,11 @@ func Test_Part2_Input2(t *testing.T) {
 	lastNum := 0
 	var lastWinner *Board
 	for _, num := range g.Numbers {
-		for i, b := range g.Boards {
+		for _, b := range g.Boards {
 			if b.Won() {
 				continue
 			}
 			if marked := b.Mark(num); marked && b.Won() {
-				t.Logf("won! on board %d with %d", i, num)
 				lastNum = num
 				lastWinner = b
 			}

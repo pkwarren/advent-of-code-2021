@@ -45,7 +45,7 @@ func Test_CalculateMinFuelPosition_Part2_Input1(t *testing.T) {
 	defer f.Close()
 	nums, err := ParseInput(f)
 	require.NoError(t, err)
-	pos, fuel := CalculateMinFuelPosition_Part2(nums)
+	pos, fuel := CalculateMinFuelPositionPart2(nums)
 	assert.Equal(t, 5, pos)
 	assert.Equal(t, 168, fuel)
 }
@@ -56,7 +56,7 @@ func Test_CalculateMinFuelPosition_Part2_Input2(t *testing.T) {
 	defer f.Close()
 	nums, err := ParseInput(f)
 	require.NoError(t, err)
-	pos, fuel := CalculateMinFuelPosition_Part2(nums)
+	pos, fuel := CalculateMinFuelPositionPart2(nums)
 	assert.Equal(t, 485, pos)
 	assert.Equal(t, 99634572, fuel)
 }

@@ -60,7 +60,7 @@ func CalculateMinFuelPosition(positions []int) (int, int) {
 	return position, minFuel
 }
 
-func CalculateMinFuelPosition_Part2(positions []int) (int, int) {
+func CalculateMinFuelPositionPart2(positions []int) (int, int) {
 	if len(positions) <= 1 {
 		return 0, 0
 	}

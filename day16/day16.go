@@ -44,7 +44,7 @@ func (l *LiteralPacket) Header() Header {
 }
 
 func (l *LiteralPacket) Value() int {
-	return int(l.value)
+	return l.value
 }
 
 func (l *LiteralPacket) SubPackets() []Packet {
