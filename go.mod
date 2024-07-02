@@ -1,6 +1,6 @@
 module github.com/pkwarren/advent-of-code-2021
 
-go 1.18
+go 1.22
 
 require github.com/stretchr/testify v1.9.0
 
